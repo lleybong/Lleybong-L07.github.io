@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 2</title>
+</head>
+
+<form id="myForm">
+    <!-- Two text fields - Name and Email -->
+    <input id="name" type="text" placeholder="Name" value=""><br><br>
+    <input id="email" type="email" placeholder="Email" value=""><br><br>
+    <!-- Two radio buttons for Gender - Male and Female -->
+    <div class="radiogroup">
+        <input id="male" type="radio" name="gender" value="Male">Male<br><br>
+        <input id="female" type="radio" name="gender" value="Female">Female<br><br>
+    </div>
+    <!-- Submit button -->
+    <input type="button" id="buttonshow" value="Submit" onclick="display()">
+</form>
+
+<div id="info"></div>
+
+<!-- Display form data -->
+<script src="js/jquery.min.js"></script>
+<script>
+    function display() {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const gender = document.querySelector('input[name="gender"]:checked');
+
+        if (name && email && gender) {
+            const genderValue = gender.value;
+            const output = `Name: ${name}<br>Email: ${email}<br>Gender: ${genderValue}`;
+            document.getElementById("info").innerHTML = output;
+        } else {
+            document.getElementById("info").innerHTML = "Please fill in all fields.";
+        }
+
+    }
+
+    $(document).ready(function () {
+        $("#buttonshow").click(function () {
+            $("p").css({ "background-color": "yellow", "font-size": "200%" });
+        });
+    });
+</script>
+</body>
+
+</html>
